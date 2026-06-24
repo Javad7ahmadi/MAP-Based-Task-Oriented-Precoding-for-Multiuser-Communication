@@ -73,4 +73,5 @@ Run Figure2.m to generate Figure 2 of the paper.
 If you use this code, please cite:
 
 M. J. Ahmadi, R. F. Schaefer, and H. V. Poor,
-MAP-Based Task-Oriented Precoding for Multiuser Communication,
+"MAP-Based Task-Oriented Precoding for Multiuser Communication,"
+arXiv preprint, 2026, submitted to IEEE Communications Letters.
