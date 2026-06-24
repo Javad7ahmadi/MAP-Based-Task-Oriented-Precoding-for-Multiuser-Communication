@@ -4,8 +4,10 @@
 
 This repository implements the methods proposed in the paper:
 
-**MAP-Based Task-Oriented Precoding for Multiuser Communication**
-Submitted to IEEE Communications Letters
+M. J. Ahmadi, R. F. Schaefer, and H. V. Poor,
+"MAP-Based Task-Oriented Precoding for Multiuser Communication,"
+arXiv preprint, 2026, submitted to IEEE Communications Letters.
+
 
 The code includes the proposed MAP-based precoding and feature learning framework, as well as the baseline MCR² method. MATLAB scripts are provided to reproduce all figures in the paper.
 
