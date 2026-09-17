@@ -20,20 +20,33 @@ The implementation consists of two stages:
 
 ## Dataset
 
-The experiments use the **ModelNet40** dataset.
+The experiments use the **ModelNet40** dataset. The dataset itself is not included in this repository due to its size. Please download the dataset and place it under the `datasets/` directory inside `PythonFiles/`.
 
-The dataset is not included in this repository due to its size. Please download the ModelNet40 dataset and place it in the following directory:
+The required directory structure is:
 
 ```text
-datasets/
+PythonFiles/
+├── MAIN.py
+├── models/
+└── datasets/
+    └── modelnet40_images_new_12x/
+        ├── bed/
+        ├── chair/
+        ├── desk/
+        ├── dresser/
+        ├── guitar/
+        ├── monitor/
+        ├── sofa/
+        ├── table/
+        ├── toilet/
+        └── xbox/
 ```
 
-The directory structure should be organized as follows:
+The experiments use the following 10 classes from ModelNet40:
 
-```text
-datasets/
-└── ModelNet40/
-    └── ...
+`bed`, `chair`, `desk`, `guitar`, `dresser`, `monitor`, `sofa`, `table`, `xbox`, and `toilet`.
+
+The other ModelNet40 classes are not used in the experiments.
 ```
 
 ## Running the Code
