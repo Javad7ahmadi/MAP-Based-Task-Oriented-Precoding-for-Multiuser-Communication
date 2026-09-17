@@ -18,6 +18,24 @@ The implementation consists of two stages:
 * Python with PyTorch (for feature generation)
 * MATLAB (for precoding design, channel modeling, and classification accuracy evaluation)
 
+## Dataset
+
+The experiments use the **ModelNet40** dataset.
+
+The dataset is not included in this repository due to its size. Please download the ModelNet40 dataset and place it in the following directory:
+
+```text
+datasets/
+```
+
+The directory structure should be organized as follows:
+
+```text
+datasets/
+└── ModelNet40/
+    └── ...
+```
+
 ## Running the Code
 
 ### 1. Configure and run the Python code
@@ -47,7 +65,6 @@ saved_MAT.mat
 
 This file contains the trained feature-extraction parameters required by the MATLAB implementation.
 
-
 ### 2. Move the generated MAT file
 
 Move or copy `saved_MAT.mat` to the directory containing the MATLAB file:
@@ -56,22 +73,19 @@ Move or copy `saved_MAT.mat` to the directory containing the MATLAB file:
 main.m
 ```
 
-
 ### 3. Run the MATLAB code
 
 Open MATLAB, navigate to the directory containing `main.m` and `saved_MAT.mat`, and run:
 
 ```matlab
-main.m
+main
 ```
 
-In main.m, select the desired system and precoder parameters, including the precoding scheme, number of antennas, number of channel uses, transmit power, and other relevant parameters. Then, run main.m to perform the precoder optimization and evaluate the resulting MAP classification accuracy.
-
-
+In `main.m`, select the desired system and precoder parameters, including the precoding scheme, number of antennas, number of channel uses, transmit power, and other relevant parameters. Then run `main.m` to perform the precoder optimization and evaluate the resulting MAP classification accuracy.
 
 ## Reproducibility
 
-To reproduce the results, first configure the desired system and training parameters in `MAIN.py`. Run the Python implementation to generate `saved_MAT.mat`, then place the generated file in the MATLAB directory and run `main.m`.
+To reproduce the results, first download and place the ModelNet40 dataset in the `datasets/` directory. Then configure the desired system and training parameters in `MAIN.py` and run the Python implementation to generate `saved_MAT.mat`. Move the generated file to the MATLAB directory, configure the desired parameters in `main.m`, and run the MATLAB implementation.
 
 ## Citation
 
