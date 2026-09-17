@@ -47,7 +47,6 @@ The experiments use the following 10 classes from ModelNet40:
 `bed`, `chair`, `desk`, `guitar`, `dresser`, `monitor`, `sofa`, `table`, `xbox`, and `toilet`.
 
 The other ModelNet40 classes are not used in the experiments.
-```
 
 ## Running the Code
 
