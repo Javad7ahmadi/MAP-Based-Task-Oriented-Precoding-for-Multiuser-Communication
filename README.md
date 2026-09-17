@@ -15,20 +15,8 @@ The implementation consists of two stages:
 
 ## Requirements
 
-### Python
-
-The Python implementation was developed using:
-
-* Python 3.11.2
-* PyTorch 2.1.2
-* CUDA 12.0
-
-### MATLAB
-
-The MATLAB implementation was developed using:
-
-* MATLAB R2024b
-
+- Python with PyTorch
+- MATLAB
 ## Running the Code
 
 ### 1. Configure and run the Python code
