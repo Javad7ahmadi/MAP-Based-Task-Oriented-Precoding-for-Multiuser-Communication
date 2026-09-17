@@ -15,8 +15,9 @@ The implementation consists of two stages:
 
 ## Requirements
 
-- Python with PyTorch
-- MATLAB
+* Python with PyTorch (for feature generation)
+* MATLAB (for precoding design, channel modeling, and classification accuracy evaluation)
+
 ## Running the Code
 
 ### 1. Configure and run the Python code
@@ -36,6 +37,8 @@ Then run:
 python3 MAIN.py
 ```
 
+After running `MAIN.py`, select the desired feature extractor when prompted and press `Enter` to start training.
+
 After the feature extractor has been trained for the specified number of epochs, the code generates the file:
 
 ```text
@@ -43,6 +46,7 @@ saved_MAT.mat
 ```
 
 This file contains the trained feature-extraction parameters required by the MATLAB implementation.
+
 
 ### 2. Move the generated MAT file
 
@@ -52,24 +56,18 @@ Move or copy `saved_MAT.mat` to the directory containing the MATLAB file:
 main.m
 ```
 
-For example:
-
-```text
-MATLAB/
-├── main.m
-├── saved_MAT.mat
-└── ...
-```
 
 ### 3. Run the MATLAB code
 
 Open MATLAB, navigate to the directory containing `main.m` and `saved_MAT.mat`, and run:
 
 ```matlab
-main
+main.m
 ```
 
-The MATLAB code loads the trained feature extractor from `saved_MAT.mat`, selects the specified precoding scheme, performs the precoder optimization, and evaluates the resulting MAP classification accuracy.
+In main.m, select the desired system and precoder parameters, including the precoding scheme, number of antennas, number of channel uses, transmit power, and other relevant parameters. Then, run main.m to perform the precoder optimization and evaluate the resulting MAP classification accuracy.
+
+
 
 ## Reproducibility
 
