@@ -1,79 +1,100 @@
-[Readme.txt](https://github.com/user-attachments/files/29289870/Readme.txt)
-
 # MAP-Based Task-Oriented Precoding for Multiuser Communication
 
-This repository implements the methods proposed in the paper:
+This repository contains the implementation of the paper:
 
-M. J. Ahmadi, R. F. Schaefer, and H. V. Poor,
-"MAP-Based Task-Oriented Precoding for Multiuser Communication,"
-arXiv preprint, 2026, submitted to IEEE Communications Letters.
+> M. J. Ahmadi, Z. Zhang, R. F. Schaefer, and H. V. Poor, "MAP-Based Task-Oriented Precoding for Multiuser Communication," *IEEE Communications Letters*.
 
+## Overview
 
-The code includes the proposed MAP-based precoding and feature learning framework, as well as the baseline MCR² method. MATLAB scripts are provided to reproduce all figures in the paper.
+The code implements the proposed MAP-based task-oriented communication framework, including feature extraction, task-oriented precoding, and MAP-based classification.
 
----
+The implementation consists of two stages:
 
-## 1. Requirements
+1. **Feature extraction and training in Python**
+2. **Precoder optimization and MAP classification in MATLAB**
 
-Python 3.8 or higher is required.
+## Requirements
 
-Install the required packages:
-pip install torch numpy tensorboard
+### Python
 
-MATLAB is also required to generate the figures.
+The Python implementation was developed using:
 
----
+* Python 3.11.2
+* PyTorch 2.1.2
+* CUDA 12.0
 
-## 2. Feature Extractor Configuration
+### MATLAB
 
-Before training, open Config.py inside the feature_extractor folder and adjust the neural network parameters such as architecture, embedding dimension, and training settings according to your setup.
+The MATLAB implementation was developed using:
 
----
+* MATLAB R2024b
 
-## 3. Training
+## Running the Code
 
-Run:
-python Main.py
+### 1. Configure and run the Python code
 
-During execution, you will be asked to choose a mode:
+Before running the Python code, open `MAIN.py` and adjust the required system and training parameters, including:
 
-1 → MCR² baseline method
-2 → Proposed MAP-based feature extractor and precoding method
+* Number of workers/users $K$
+* Feature dimension $D_k$
+* Number of training epochs
+* Batch size
+* Learning rate
+* Other required simulation parameters
 
-You must run the training twice:
-First with option 1, then again with option 2.
+Then run:
 
-Wait until each training run is fully completed before starting the next one.
+```bash
+python3 MAIN.py
+```
 
----
+After the feature extractor has been trained for the specified number of epochs, the code generates the file:
 
-## 4. Export Results
+```text
+saved_MAT.mat
+```
 
-After training, run:
-python Export.py
+This file contains the trained feature-extraction parameters required by the MATLAB implementation.
 
-Again, select:
-1 for MCR² baseline
-2 for proposed method
+### 2. Move the generated MAT file
 
-This will generate .mat files for MATLAB processing.
+Move or copy `saved_MAT.mat` to the directory containing the MATLAB file:
 
----
+```text
+main.m
+```
 
-## 5. Plot Results
+For example:
 
-In MATLAB:
+```text
+MATLAB/
+├── main.m
+├── saved_MAT.mat
+└── ...
+```
 
-Run Figure1.m to generate Figure 1 of the paper.
+### 3. Run the MATLAB code
 
-Run Figure2.m to generate Figure 2 of the paper.
+Open MATLAB, navigate to the directory containing `main.m` and `saved_MAT.mat`, and run:
 
----
+```matlab
+main
+```
 
-## 6. Citation
+The MATLAB code loads the trained feature extractor from `saved_MAT.mat`, selects the specified precoding scheme, performs the precoder optimization, and evaluates the resulting MAP classification accuracy.
 
-If you use this code, please cite:
+## Reproducibility
 
-M. J. Ahmadi, R. F. Schaefer, and H. V. Poor,
-"MAP-Based Task-Oriented Precoding for Multiuser Communication,"
-arXiv preprint, 2026, submitted to IEEE Communications Letters.
+To reproduce the results, first configure the desired system and training parameters in `MAIN.py`. Run the Python implementation to generate `saved_MAT.mat`, then place the generated file in the MATLAB directory and run `main.m`.
+
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@article{Ahmadi2026MAP,
+  author  = {Ahmadi, Mohammad Javad and Zhang, Zhentian and Schaefer, Rafael F. and Poor, H. Vincent},
+  title   = {MAP-Based Task-Oriented Precoding for Multiuser Communication},
+  journal = {IEEE Communications Letters}
+}
+```
